@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<html>
+    
+    <head>
+        
+        <title>Employment Application Form</title>
+        
+        <style>
+            a {
+                color: blue;
+                
+            }
+            
+            body{
+                color: blue;
+                background: white;
+            }
+            
+        </style>
+
+   </head>
+   
+   <body>
+       
+       
+       
+       <a><h1>Employment Application Form</h1></a>
+       
+       
+        <form action="home.html"  method="get" onsubmit="return ValidateForm(this);">
+
+           <script type="text/javascript">
+                function ValidateForm(frm) {
+                   if (frm.First_Name.value == "") { alert('First name is required.'); frm.First_Name.focus(); return false; }
+                   if (frm.Last_Name.value == "") { alert('Last name is required.'); frm.Last_Name.focus(); return false; }
+                   if (frm.Email_Address.value == "") { alert('Email address is required.'); frm.Email_Address.focus(); return false; }
+                   if (frm.Email_Address.value.indexOf("@") < 1 || frm.Email_Address.value.indexOf(".") < 1) { alert('Please enter a valid email address.'); frm.Email_Address.focus(); return false; }
+                   if (frm.Phone.value == "") { alert('Phone is required.'); frm.Phone.focus(); return false; }
+                   
+                return true;
+    
+                }
+           
+           </script>
+           
+            <table border="0" cellpadding="5" cellspacing="0">
+               
+                <tr>
+                    
+                    <td style="width: 50%">
+                
+                <a1><label for="First_Name"><b>First name *</b></label></a1><br />
+                
+                <input name="First_Name" type="text" maxlength="50" style="width: 260px" />
+                   
+                    </td> 
+              
+                </tr>
+                    
+                <tr> 
+                    <td style="width: 50%">
+                       <label for="Last_Name"><b>Last name *</b></label><br />
+                       <input name="Last_Name" type="text" maxlength="50" style="width: 260px" />
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td colspan="2">
+                       <label for="Email_Address"><b>Email *</b></label><br />
+                       <input name="Email_Address" type="text" maxlength="50" style="width: 260px" />
+                    </td> 
+                </tr>
+                
+                <tr> 
+                    <td>
+                       
+                        <label for="ProjectName"><b>Project Name</b></label><br /> <input name="Project Name" type="text" maxlength="50" style="width: 260px" /> 
+                       
+                    </td> 
+                </tr> 
+                <tr> 
+                    <td>
+                       <label for="Phone"><b>Phone *</b></label><br />
+                       <input name="Phone" type="text" maxlength="50" style="width: 260px" />
+                    </td> 
+                    
+                </tr>
+                <tr>
+               
+                    <td>
+                    
+                        <input name="Save" type="submit" value="Submit"/>
+                    
+                    </td>
+                    
+                    
+                </tr>
+            </table>
+        </form>
+
+    </body>
+</html>

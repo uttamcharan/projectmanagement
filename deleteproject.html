@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<title>delete project</title>
+<meta charset="UTF-8">
+<meta name="description" content="Free Web tutorials">
+<meta name="keywords" content="HTML,CSS">
+<meta name="author" content="WebCodeGeeks.com">
+<style>
+    .button{
+                display: inline-block;
+                padding: 10px 75px;
+                margin-right: 1px;
+                font-size: 14px;
+                cursor: pointer;
+                text-align: center;
+                text-decoration: none;
+                outline: none;
+                color: #fff;
+                background-color:cornflowerblue ;
+                border: none;
+               
+            }
+</style>
+<script src="Storage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+<script type="text/javascript">
+    function getProjectsToDelete(){
+                            
+                           
+                            
+                                $.ajax({                                      
+                                    url: 'getProjects.php',                           
+                                    type: 'GET',                    
+                                    dataType: 'json',                     
+                                    success: function(data)          
+                                    {
+                                        var listOfProjects = "<tr><th>Name</th><th>Value</th><th>Delete</th></tr>\n";
+                                        if(data.length>0){
+                                            for(var k in data){
+                                           var projectName = data[k]["projectName"];
+                                           var mileStone = data[k]["mileStone"];
+                                           listOfProjects+="<tr><td>" + projectName + "</td>\n<td>"+ mileStone + "</td>\n"+"</td>\n<td><button class='button' name='deleteProjectValue' type='submit' value="+projectName+">Delete</button></td></tr>\n";
+                                           
+                                           
+                                       }
+                                        }else{
+                                            listOfProjects+="<tr><td><b>No Projects</b></td>\n<td><b>N/A</b></td></tr>\n";
+                                        }
+                                       
+                                      document.getElementById('list').innerHTML = listOfProjects;
+                                     
+                                    } 
+                                });
+                                
+                                
+                        }
+</script>
+<link rel="stylesheet" href="StorageStyle.css">
+</head>
+<body onload="getProjectsToDelete()">
+	<h1>Project details</h1>
+        <form name=ProjectList action="deleteProject.php" method="POST">
+
+		
+
+		<div id="items_table">
+			<h2>Project List</h2>
+			<table id=list></table>
+			
+		</div>
+	</form>
+
+</body>
+</html>

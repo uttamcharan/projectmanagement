@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<title>new project</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="HTML,CSS">
+<script src="Storage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+<script>
+    function addProjectToDB(){
+        var project = document.forms.ProjectList.name.value;
+        var mileStone = document.forms.ProjectList.data.value;
+    $.ajax({                                      
+      url: 'addProject.php',                          
+      data: {projectName: project, mileStone:mileStone},  
+      type: 'POST',                    
+      dataType: 'json',                     
+      success: function(data)          
+      {
+          if(data==1){
+              $('#output').html("<b>Project "+project+" is created successfully</b>");
+          }else{
+              $('#output').html("<b>Project creation failure</b>");
+          }
+      } 
+    });
+ 
+    }
+</script>
+<link rel="stylesheet" href="StorageStyle.css">
+</head>
+<body>
+	<h1>Enter Project Name</h1>
+	<form name=ProjectList>
+
+		<div id="PlayArea">
+			<table>
+				<tr>
+
+					<td><b>Project Name:</b><input type=text name=name></td>
+					<td><b>Milestones:</b><input type=text name=data></td>
+
+				</tr>
+
+				<tr>
+					<td>
+					    <input type=button value="Save"   onclick="addProjectToDB()"> 
+					    
+                                            
+					  </td>
+				</tr>
+			</table>
+		</div>
+            
+            <div id="output"></div>
+
+		
+			
+	</form>
+
+</body>
+</html>
